@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de estacionamento</title>
+</head>
+<body>
+
+    <header></header>
+
+    <main>
+        <form>
+            <fieldset>
+                <legend>Dados sobre o veículo</legend>
+
+                <input
+                type="text"
+                id="name"
+                placeholder="Digite o nome do veículo"
+                autocomplete="off"
+                />
+
+                <input
+                type="text"
+                id="vehicle-plate"
+                placeholder="Digite a placa do veículo"
+                autocomplete="off"
+                />
+
+                <button id="registrer">cadastrar</button>
+            </fieldset>
+        </form>
+
+        <table border="2px">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Placa</th>
+                    <th>Entrada</th>
+                    <th>Saída</th>
+                </tr>
+            </thead>
+            <tbody id="vehicle-yard"></tbody>
+        </table>
+    </main>
+
+    <footer></footer>
+
+    <script type="module" src="./scripts/main.mjs"></script>
+</body>
+</html>
