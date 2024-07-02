@@ -1,0 +1,33 @@
+{
+    "tasks": {
+        "init": "   deno run --env=.env -A src/_main.ts",
+        "build": "deno run --allow-read --allow-env --allow-run building.ts",
+        "build:dev": "deno run --allow-read --allow-write --allow-api --allow-env --allow-run --watch=src/modules/main.ts building.ts",
+        "dev": "deno task build:dev & deno run --watch --allow-net --allow-read src/server/server.ts"
+    },
+    "lint": {
+        "include": ["src/*"],
+        "rules": {
+            "tags": ["recommended"],
+            "include": ["ban-untagged-todo"],
+            "exclude": ["no-unused-vars"]
+        }
+    },
+    "compilerOptions": {
+        "lib": [
+            "deno.window",
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ]
+    },
+    "fmt": {
+        "exclude": ["**/public/scripts/*"],
+        "useTabs": false,
+        "lineWidth": 80,
+        "indentWidth": 4,
+        "semiColons": true,
+        "singleQuote": false,
+        "proseWrap": "preserve"
+    }
+}
