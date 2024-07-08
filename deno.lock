@@ -1,5 +1,52 @@
 {
   "version": "3",
+  "packages": {
+    "specifiers": {
+      "jsr:@std/cli@^0.224.7": "jsr:@std/cli@0.224.7",
+      "jsr:@std/encoding@1.0.0-rc.2": "jsr:@std/encoding@1.0.0-rc.2",
+      "jsr:@std/fmt@^0.225.4": "jsr:@std/fmt@0.225.5",
+      "jsr:@std/http": "jsr:@std/http@0.224.5",
+      "jsr:@std/media-types@^1.0.0-rc.1": "jsr:@std/media-types@1.0.1",
+      "jsr:@std/net@^0.224.3": "jsr:@std/net@0.224.4",
+      "jsr:@std/path@1.0.0-rc.2": "jsr:@std/path@1.0.0-rc.2",
+      "jsr:@std/streams@^0.224.5": "jsr:@std/streams@0.224.5"
+    },
+    "jsr": {
+      "@std/cli@0.224.7": {
+        "integrity": "654ca6477518e5e3a0d3fabafb2789e92b8c0febf1a1d24ba4b567aba94b5977"
+      },
+      "@std/encoding@1.0.0-rc.2": {
+        "integrity": "160d7674a20ebfbccdf610b3801fee91cf6e42d1c106dd46bbaf46e395cd35ef"
+      },
+      "@std/fmt@0.225.5": {
+        "integrity": "38aa42528584873378a521f7842c1a1e99f0235d3f7d3db5ca02795312f439b8"
+      },
+      "@std/http@0.224.5": {
+        "integrity": "b03b5d1529f6c423badfb82f6640f9f2557b4034cd7c30655ba5bb447ff750a4",
+        "dependencies": [
+          "jsr:@std/cli@^0.224.7",
+          "jsr:@std/encoding@1.0.0-rc.2",
+          "jsr:@std/fmt@^0.225.4",
+          "jsr:@std/media-types@^1.0.0-rc.1",
+          "jsr:@std/net@^0.224.3",
+          "jsr:@std/path@1.0.0-rc.2",
+          "jsr:@std/streams@^0.224.5"
+        ]
+      },
+      "@std/media-types@1.0.1": {
+        "integrity": "f2ddc3497be0bd87ac0c9b9b26bb454f76bdc45e1b9a12146af47fab3ba2828c"
+      },
+      "@std/net@0.224.4": {
+        "integrity": "4be5b6fb9cab0380b68d9929503bcbac35f22eb5d179ec1e2f331646c0066fe8"
+      },
+      "@std/path@1.0.0-rc.2": {
+        "integrity": "39f20d37a44d1867abac8d91c169359ea6e942237a45a99ee1e091b32b921c7d"
+      },
+      "@std/streams@0.224.5": {
+        "integrity": "bcde7818dd5460d474cdbd674b15f6638b9cd73cd64e52bd852fba2bd4d8ec91"
+      }
+    }
+  },
   "remote": {
     "https://deno.land/x/denoflate@1.2.1/mod.ts": "f5628e44b80b3d80ed525afa2ba0f12408e3849db817d47a883b801f9ce69dd6",
     "https://deno.land/x/denoflate@1.2.1/pkg/denoflate.js": "b9f9ad9457d3f12f28b1fb35c555f57443427f74decb403113d67364e4f2caf4",

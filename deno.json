@@ -1,9 +1,9 @@
 {
     "tasks": {
-        "init": "   deno run --env=.env -A src/_main.ts",
+        "init": "   deno run --env=.env --allow-env --allow-net --allow-read src/server/server.ts",
         "build": "deno run --allow-read --allow-env --allow-run building.ts",
-        "build:dev": "deno run --allow-read --allow-write --allow-api --allow-env --allow-run --watch=src/modules/main.ts building.ts",
-        "dev": "deno task build:dev & deno run --watch --allow-net --allow-read src/server/server.ts"
+        "build:dev": "deno run --allow-read --allow-write --allow-env --allow-run --watch=src/modules/main.ts building.ts",
+        "dev": "deno task build:dev & deno run --watch --env=.env --allow-env --allow-net --allow-read src/server/server.ts"
     },
     "lint": {
         "include": ["src/*"],
