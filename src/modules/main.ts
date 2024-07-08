@@ -1,16 +1,20 @@
-import { validadeVehicleInputs } from "./tools/validate-inputs.ts";
+import { VehicleOnYard } from "./models/vehicle-input-model.ts";
+import { vehicleController } from "./tools/vehicle-controller.ts";
+import { yardController } from "./tools/yard-controller.ts";
+import { $ } from "./tools/query.ts";
 
-const $ = (query: string): HTMLInputElement | null =>
-    document.querySelector(query);
+const input_field = $("#registrer");
 
-$("#registrer")?.addEventListener("click", () => {
+input_field?.addEventListener("click", () => {
     const name = $("#name")?.value;
     const vehicle_plate = $("#vehicle-plate")?.value;
 
-    if (!validadeVehicleInputs(name, vehicle_plate)) {
-        alert(
-            "Os campos NOME e PLACA são obrigatórios, por favor preenchê-los",
-        );
-        return;
-    }
+    vehicleController.validate(name, vehicle_plate);
+
+    const vehicle = new VehicleOnYard(
+        name as string,
+        vehicle_plate as string,
+    );
+
+    yardController.ingress(vehicle, true);
 });
