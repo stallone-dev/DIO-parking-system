@@ -1,17 +1,9 @@
-// src/modules/tools/validate-inputs.ts
-function validadeVehicleInputs(name, plate) {
-  return !!name && !!plate;
-}
-
-// src/modules/main.ts
-var $ = (query) => document.querySelector(query);
-$("#registrer")?.addEventListener("click", () => {
-  const name = $("#name")?.value;
-  const vehicle_plate = $("#vehicle-plate")?.value;
-  if (!validadeVehicleInputs(name, vehicle_plate)) {
-    alert(
-      "Os campos NOME e PLACA s\xE3o obrigat\xF3rios, por favor preench\xEA-los"
-    );
-    return;
-  }
-});
+var i=class{name;plate;entry_date;exit_date;constructor(t,r){this.name=t,this.plate=r,this.entry_date=new Date().getTime(),this.exit_date=""}getName(){return this.name}getPlate(){return this.plate}getEntryDate(){return this.entry_date}getSaidDate(){return this.exit_date??"Vehicle not egressed"}getYardTime(){if(!this.exit_date)return"Vehicle not egreesed";let t=new Date(this.entry_date).getTime(),r=new Date(this.exit_date).getTime(),a=Math.abs(r-t),m=1e3*60*60;return`${Math.round(a/m)} hours`}setSaidDate(t){this.exit_date=t.getTime()}};async function u(e,t){if(!(!!e&&!!t)){alert("Os campos NOME e PLACA s\xE3o obrigat\xF3rios, por favor preench\xEA-los");return}}var f={validate:u};function n(e){return document.querySelector(e)}async function s(e,t){t&&localStorage.setItem("yard",JSON.stringify(e))}async function o(){let e=localStorage.getItem("yard");if(!e)return[];let t=JSON.parse(e),r=new Array(t.length);return t.forEach((a,m)=>{r[m]=new i(a.name,a.plate)}),r}async function d(){n("#vehicle-yard").innerHTML="",(await o()).forEach(t=>c(t))}async function l(e){e?.addEventListener("click",function(){g(this.dataset.plate)})}async function g(e){let t=await o(),r=t.find(a=>a.getPlate()===e);r?.setSaidDate(new Date),confirm(`O ve\xEDculo ${r?.getName()} permaneceu por ${r?.getYardTime()}
+Deseja encerrar?`)&&(s(t.filter(a=>a.getPlate()!==e),!0),d())}async function c(e,t){let r=await h(e);n("#vehicle-yard")?.appendChild(r),s([...await o(),e],t)}async function h(e){let t=document.createElement("tr");return t.innerHTML=`
+        <td>${e.getName()}</td>
+        <td>${e.getPlate()}</td>
+        <td>${new Date(e.getEntryDate()).toLocaleString()}</td>
+        <td>
+            <button class="egress" data-plate="${e.getPlate()}">X</button>
+        </td>
+    `,await l(t.querySelector(".egress")),t}var p={ingress:c,egress:l,updateList:d};var y=n("#registrer");p.updateList();y?.addEventListener("click",()=>{let e=n("#name")?.value,t=n("#vehicle-plate")?.value;f.validate(e,t);let r=new i(e,t);p.ingress(r,!0)});
