@@ -5,6 +5,8 @@ import { $ } from "./tools/query.ts";
 
 const input_field = $("#registrer");
 
+yardController.updateList();
+
 input_field?.addEventListener("click", () => {
     const name = $("#name")?.value;
     const vehicle_plate = $("#vehicle-plate")?.value;
