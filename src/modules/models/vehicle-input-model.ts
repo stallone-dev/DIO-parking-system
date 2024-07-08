@@ -29,31 +29,10 @@ class VehicleOnYard {
         if (!this.exit_date) return "Vehicle not egreesed";
         const entry = new Date(this.entry_date).getTime();
         const said = new Date(this.exit_date).getTime();
-        const yard_time = Math.abs(said - entry);
+        const yard_time_on_ms = Math.abs(said - entry);
+        const hour_reference = 1000 * 60 * 60;
 
-        console.log(yard_time);
-
-        const calculate_days = (n: number) => {
-            const day_ref = 1000 * 60 * 60 * 24;
-            return Math.ceil(n / day_ref);
-        };
-
-        const calculate_hours = (n: number, days?: number) => {
-            const days_discount = (days > 0 ? days - 1 : 0) * 1000 * 60 * 60 *
-                24;
-            const hour_ref = 1000 * 60 * 60;
-            console.log(days_discount);
-            return Math.ceil((n - days_discount) / hour_ref);
-        };
-
-        const days = calculate_days(yard_time);
-        const hours = calculate_hours(yard_time, days);
-        let result = ``;
-
-        if (days > 0) result += `${days} day${days === 1 ? "" : "s"}, `;
-        result += `${hours} hours.`;
-
-        return result;
+        return `${Math.round(yard_time_on_ms / hour_reference)} hours`;
     }
 
     public setSaidDate(date: Date): void {
