@@ -1,6 +1,7 @@
 import { VehicleOnYard } from "../../models/vehicle-input-model.ts";
 import { $ } from "../query.ts";
 import { updateBackupOfYard } from "./backup.ts";
+import { egressOffYard } from "./egress.ts";
 import { recoveryBackupOfYard } from "./recovery.ts";
 
 export { ingressOnYard };
@@ -30,6 +31,7 @@ async function createYardRow(
         </td>
     `;
 
+    await egressOffYard(row.querySelector(".egress") as HTMLTableRowElement);
 
     return row;
 }
