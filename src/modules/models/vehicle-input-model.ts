@@ -3,13 +3,13 @@ export { VehicleOnYard };
 class VehicleOnYard {
     private readonly name: string;
     private readonly plate: string;
-    private entry_date: string;
-    private exit_date: string;
+    private entry_date: number;
+    private exit_date: number | string;
 
     constructor(name: string, plate: string) {
         this.name = name;
         this.plate = plate;
-        this.entry_date = new Date().toISOString();
+        this.entry_date = new Date().getTime();
         this.exit_date = "";
     }
 
@@ -19,10 +19,10 @@ class VehicleOnYard {
     public getPlate(): string {
         return this.plate;
     }
-    public getEntryDate(): string {
+    public getEntryDate(): number {
         return this.entry_date;
     }
-    public getSaidDate(): string {
+    public getSaidDate(): number | string {
         return this.exit_date ?? "Vehicle not egressed";
     }
     public getYardTime(): string {
@@ -57,6 +57,6 @@ class VehicleOnYard {
     }
 
     public setSaidDate(date: Date): void {
-        this.exit_date = date.toISOString();
+        this.exit_date = date.getTime();
     }
 }
